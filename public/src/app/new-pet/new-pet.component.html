@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col s12 m6 offset-m3 l6 offset-l3">
+      <div class="card">
+        <form class="card-content" [formGroup]="create" (ngSubmit)="createPet(create.value)">
+          <h4>Know of a pet needing a home?</h4>
+          <label style="color: red;" *ngIf="!create.valid && (create.dirty || create.touched)">Each field must contain at least 3 characters.</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.name.message }}</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.type.message }}</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.description.message }}</label><br>
+          <label>Pet Name:</label>
+          <input type="text" formControlName="name">
+          <label>Pet Type:</label>
+          <input type="text" formControlName="type">
+          <label>Description:</label>
+          <input type="text" formControlName="description">
+
+          <p><strong>Skills:</strong></p><br>
+
+          <label>Skill1:</label>
+          <input type="text" formControlName="skill1">
+          <label>Skill2:</label>
+          <input type="text" formControlName="skill2">
+          <label>Skill3:</label>
+          <input type="text" formControlName="skill3">
+
+          <button class="btn" type="submit" name="submit" [disabled]="!create.valid">Add Pet</button>
+          <a class="btn" [routerLink]="['']" name="cancel" >Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

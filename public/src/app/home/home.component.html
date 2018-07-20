@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col s12 m6 offset-m3 l6 offset-l3">
+    <div class="card">
+      <div class="card-content">
+        <h4>Pet Shelter</h4>
+        <p>These pets are looking for a home!</p>
+        <table class="highlight striped">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pet of all_pets">
+              <td>{{ pet.name }}</td>
+              <td>{{ pet.type }}</td>
+              <td>
+                <a [routerLink]="['/pets/', pet._id]">Details</a><br>
+                <a [routerLink]="['/pets/edit/', pet._id]">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

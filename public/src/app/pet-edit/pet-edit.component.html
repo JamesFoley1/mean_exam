@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col s12 m6 offset-m3 l6 offset-l3">
+      <div class="card">
+        <form class="card-content" [formGroup]="update" (ngSubmit)="updatePet(update.value)">
+          <h4>Edit this pet</h4>
+          <label style="color: red;" *ngIf="!update.valid && (update.dirty || update.touched)">Each field must contain at least 3 characters.</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.name.message }}</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.type.message }}</label><br>
+          <label style="color: red;" *ngIf="errors">{{ errors.description.message }}</label><br>
+          <label>Pet Name:</label>
+          <input type="text" formControlName="name" [ngModel]="pet.name">
+          <label>Pet Type:</label>
+          <input type="text" formControlName="type" [ngModel]="pet.type">
+          <label>Description:</label>
+          <input type="text" formControlName="description" [ngModel]="pet.description">
+
+          <p><strong>Skills:</strong></p><br>
+
+          <ul>
+            <li>
+              <label>Skill 1:</label>
+              <input type="text" formControlName="skill1" [ngModel]="pet.skills[0]">
+            </li>
+            <li>
+              <label>Skill 2:</label>
+              <input type="text" formControlName="skill2" [ngModel]="pet.skills[1]">
+            </li>
+            <li>
+              <label>Skill 3:</label>
+              <input type="text" formControlName="skill3" [ngModel]="pet.skills[2]">
+            </li>
+          </ul>
+          
+          <!-- <label>Skill2:</label>
+          <input type="text" formControlName="skill2">
+          <label>Skill3:</label>
+          <input type="text" formControlName="skill3"> -->
+
+          <button class="btn" type="submit" name="submit" [disabled]="!update.valid">Add Pet</button>
+          <a class="btn" [routerLink]="['/pets/', id]" name="cancel" >Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
